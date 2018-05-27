@@ -6,7 +6,6 @@ import java.util.Date;
 public class VehiculoModel {
 
     private String matricula;
-    private int dni;
     private String modelo;
     private String color;
     private Date fechaentrada;
@@ -16,11 +15,10 @@ public class VehiculoModel {
 		super();
 	}
 
-	public VehiculoModel(String matricula, int dni, String modelo, String color, Date fechaentrada,
+	public VehiculoModel(String matricula, String modelo, String color, Date fechaentrada,
 			ClienteModel cliente) {
 		super();
 		this.matricula = matricula;
-		this.dni = dni;
 		this.modelo = modelo;
 		this.color = color;
 		this.fechaentrada = fechaentrada;
@@ -33,14 +31,6 @@ public class VehiculoModel {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
-	}
-
-	public int getDni() {
-		return dni;
-	}
-
-	public void setDni(int dni) {
-		this.dni = dni;
 	}
 
 	public String getModelo() {
@@ -80,8 +70,6 @@ public class VehiculoModel {
 		StringBuilder builder = new StringBuilder();
 		builder.append("VehiculoModel [matricula=");
 		builder.append(matricula);
-		builder.append(", dni=");
-		builder.append(dni);
 		builder.append(", modelo=");
 		builder.append(modelo);
 		builder.append(", color=");

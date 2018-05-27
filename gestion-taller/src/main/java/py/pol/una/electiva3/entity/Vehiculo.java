@@ -2,9 +2,11 @@ package py.pol.una.electiva3.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -16,39 +18,37 @@ import javax.persistence.TemporalType;
  * @author dlopez
  */
 @Entity
-@Table(name = "Vehiculo")
+@Table(name = "vehiculo")
 public class Vehiculo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected VehiculoPK vehiculoPK;
-    @Column(name = "Modelo")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "matricula")
+    private String matricula;
+    @Column(name = "modelo")
     private String modelo;
-    @Column(name = "Color")
+    @Column(name = "color")
     private String color;
-    @Column(name = "Fecha_entrada")
+    @Column(name = "fecha_entrada")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaentrada;
-    @JoinColumn(name = "DNI", referencedColumnName = "DNI", insertable = false, updatable = false)
+    private Date fechaEntrada;
+    @JoinColumn(name = "dni", referencedColumnName = "dni")
     @ManyToOne(optional = false)
-    private Cliente cliente;
+    private Cliente dni;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(VehiculoPK vehiculoPK) {
-        this.vehiculoPK = vehiculoPK;
+    public Vehiculo(String matricula) {
+        this.matricula = matricula;
     }
 
-    public Vehiculo(String matricula, int dni) {
-        this.vehiculoPK = new VehiculoPK(matricula, dni);
+    public String getMatricula() {
+        return matricula;
     }
 
-    public VehiculoPK getVehiculoPK() {
-        return vehiculoPK;
-    }
-
-    public void setVehiculoPK(VehiculoPK vehiculoPK) {
-        this.vehiculoPK = vehiculoPK;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public String getModelo() {
@@ -68,25 +68,25 @@ public class Vehiculo implements Serializable {
     }
 
     public Date getFechaentrada() {
-        return fechaentrada;
+        return fechaEntrada;
     }
 
     public void setFechaentrada(Date fechaentrada) {
-        this.fechaentrada = fechaentrada;
+        this.fechaEntrada = fechaentrada;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getDni() {
+        return dni;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setDni(Cliente dni) {
+        this.dni = dni;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (vehiculoPK != null ? vehiculoPK.hashCode() : 0);
+        hash += (matricula != null ? matricula.hashCode() : 0);
         return hash;
     }
 
@@ -97,7 +97,7 @@ public class Vehiculo implements Serializable {
             return false;
         }
         Vehiculo other = (Vehiculo) object;
-        if ((this.vehiculoPK == null && other.vehiculoPK != null) || (this.vehiculoPK != null && !this.vehiculoPK.equals(other.vehiculoPK))) {
+        if ((this.matricula == null && other.matricula != null) || (this.matricula != null && !this.matricula.equals(other.matricula))) {
             return false;
         }
         return true;
@@ -105,7 +105,7 @@ public class Vehiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "prueba.newpackage.Vehiculo[ vehiculoPK=" + vehiculoPK + " ]";
+        return "prueba.newpackage.Vehiculo[ matricula=" + matricula + " ]";
     }
     
 }

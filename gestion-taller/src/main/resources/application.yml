@@ -1,5 +1,6 @@
 server:
   port: 8088
+  context-path: /electiva3/api
 spring:
   profiles.active: develop
 ---

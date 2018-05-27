@@ -7,6 +7,7 @@
 package py.pol.una.electiva3.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,9 +62,15 @@ public class Usuario implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "prueba.newpackage.Usuario[ codUsuario=" + codUsuario + " ]";
-    }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [codUsuario=");
+		builder.append(codUsuario);
+		builder.append("]");
+		return builder.toString();
+	}
+
+    
     
 }

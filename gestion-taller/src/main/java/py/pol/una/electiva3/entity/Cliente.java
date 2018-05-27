@@ -2,6 +2,7 @@ package py.pol.una.electiva3.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,27 +12,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author dlopez
  */
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "DNI")
+    @Column(name = "dni")
     private Integer dni;
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
-    @Column(name = "Apellido")
+    @Column(name = "apellido")
     private String apellido;
-    @Column(name = "Direccion")
+    @Column(name = "direccion")
     private String direccion;
-    @Column(name = "Telefono")
+    @Column(name = "telefono")
     private String telefono;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dni")
     private List<Vehiculo> vehiculoList;
 
     public Cliente() {
@@ -110,9 +114,25 @@ public class Cliente implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "prueba.newpackage.Cliente[ dni=" + dni + " ]";
-    }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cliente [dni=");
+		builder.append(dni);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", apellido=");
+		builder.append(apellido);
+		builder.append(", direccion=");
+		builder.append(direccion);
+		builder.append(", telefono=");
+		builder.append(telefono);
+		builder.append(", vehiculoList=");
+		builder.append(vehiculoList);
+		builder.append("]");
+		return builder.toString();
+	}
+
+    
     
 }
