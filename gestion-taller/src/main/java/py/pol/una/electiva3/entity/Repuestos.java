@@ -5,10 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -20,8 +17,6 @@ import javax.persistence.Table;
 public class Repuestos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "repuesto_generator")
-	@SequenceGenerator(name="repuesto_generator", sequenceName = "repuesto_seq", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "cod_repuesto")
     private Integer codRepuesto;
@@ -90,8 +85,16 @@ public class Repuestos implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "prueba.newpackage.Repuestos[ codRepuesto=" + codRepuesto + " ]";
-    }
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Repuestos [codRepuesto=");
+		builder.append(codRepuesto);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", precio=");
+		builder.append(precio);
+		builder.append("]");
+		return builder.toString();
+	}
     
 }

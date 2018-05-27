@@ -11,7 +11,7 @@ spring:
     show-sql: true
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/banco_hierro
+    url: jdbc:postgresql://localhost:5432/gestion_taller
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver

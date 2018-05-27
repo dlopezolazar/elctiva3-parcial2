@@ -25,22 +25,32 @@ public class Vehiculo implements Serializable {
     @Basic(optional = false)
     @Column(name = "matricula")
     private String matricula;
+    @Basic(optional = false)
     @Column(name = "modelo")
     private String modelo;
+    @Basic(optional = false)
     @Column(name = "color")
     private String color;
+    @Basic(optional = false)
     @Column(name = "fecha_entrada")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaEntrada;
-    @JoinColumn(name = "dni", referencedColumnName = "dni")
+    @JoinColumn(name = "cedula", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
-    private Cliente dni;
+    private Cliente cliente;
 
     public Vehiculo() {
     }
 
     public Vehiculo(String matricula) {
         this.matricula = matricula;
+    }
+
+    public Vehiculo(String matricula, String modelo, String color, Date fechaEntrada) {
+        this.matricula = matricula;
+        this.modelo = modelo;
+        this.color = color;
+        this.fechaEntrada = fechaEntrada;
     }
 
     public String getMatricula() {
@@ -67,20 +77,20 @@ public class Vehiculo implements Serializable {
         this.color = color;
     }
 
-    public Date getFechaentrada() {
+    public Date getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaentrada(Date fechaentrada) {
-        this.fechaEntrada = fechaentrada;
+    public void setFechaEntrada(Date fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
     }
 
-    public Cliente getDni() {
-        return dni;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setDni(Cliente dni) {
-        this.dni = dni;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     @Override
@@ -103,9 +113,23 @@ public class Vehiculo implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "prueba.newpackage.Vehiculo[ matricula=" + matricula + " ]";
-    }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Vehiculo [matricula=");
+		builder.append(matricula);
+		builder.append(", modelo=");
+		builder.append(modelo);
+		builder.append(", color=");
+		builder.append(color);
+		builder.append(", fechaEntrada=");
+		builder.append(fechaEntrada);
+		builder.append(", cliente=");
+		builder.append(cliente);
+		builder.append("]");
+		return builder.toString();
+	}
+
+    
     
 }

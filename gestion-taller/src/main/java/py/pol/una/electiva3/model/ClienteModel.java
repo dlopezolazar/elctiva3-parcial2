@@ -3,7 +3,7 @@ package py.pol.una.electiva3.model;
 
 public class ClienteModel {
 
-    private Integer dni;
+    private Integer cedula;
     private String nombre;
     private String apellido;
     private String direccion;
@@ -13,21 +13,21 @@ public class ClienteModel {
 		super();
 	}
 
-	public ClienteModel(Integer dni, String nombre, String apellido, String direccion, String telefono) {
+	public ClienteModel(Integer cedula, String nombre, String apellido, String direccion, String telefono) {
 		super();
-		this.dni = dni;
+		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
 		this.telefono = telefono;
 	}
 
-	public Integer getDni() {
-		return dni;
+	public Integer getCedula() {
+		return cedula;
 	}
 
-	public void setDni(Integer dni) {
-		this.dni = dni;
+	public void setCedula(Integer cedula) {
+		this.cedula = cedula;
 	}
 
 	public String getNombre() {
@@ -65,8 +65,8 @@ public class ClienteModel {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ClienteModel [dni=");
-		builder.append(dni);
+		builder.append("ClienteModel [cedula=");
+		builder.append(cedula);
 		builder.append(", nombre=");
 		builder.append(nombre);
 		builder.append(", apellido=");

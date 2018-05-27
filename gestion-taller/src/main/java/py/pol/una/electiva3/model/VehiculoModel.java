@@ -8,20 +8,20 @@ public class VehiculoModel {
     private String matricula;
     private String modelo;
     private String color;
-    private Date fechaentrada;
+    private Date fechaEntrada;
     private ClienteModel cliente;
     
 	public VehiculoModel() {
 		super();
 	}
 
-	public VehiculoModel(String matricula, String modelo, String color, Date fechaentrada,
+	public VehiculoModel(String matricula, String modelo, String color, Date fechaEntrada,
 			ClienteModel cliente) {
 		super();
 		this.matricula = matricula;
 		this.modelo = modelo;
 		this.color = color;
-		this.fechaentrada = fechaentrada;
+		this.fechaEntrada = fechaEntrada;
 		this.cliente = cliente;
 	}
 
@@ -49,12 +49,12 @@ public class VehiculoModel {
 		this.color = color;
 	}
 
-	public Date getFechaentrada() {
-		return fechaentrada;
+	public Date getFechaEentrada() {
+		return fechaEntrada;
 	}
 
-	public void setFechaentrada(Date fechaentrada) {
-		this.fechaentrada = fechaentrada;
+	public void setFechaEntrada(Date fechaEntrada) {
+		this.fechaEntrada = fechaEntrada;
 	}
 
 	public ClienteModel getCliente() {
@@ -74,8 +74,8 @@ public class VehiculoModel {
 		builder.append(modelo);
 		builder.append(", color=");
 		builder.append(color);
-		builder.append(", fechaentrada=");
-		builder.append(fechaentrada);
+		builder.append(", fechaEntrada=");
+		builder.append(fechaEntrada);
 		builder.append(", cliente=");
 		builder.append(cliente);
 		builder.append("]");

@@ -43,7 +43,7 @@ public class ClienteController {
 			
 			for (Cliente cliente : listClient) {
 				
-				model.add(new ClienteModel(cliente.getDni(), 
+				model.add(new ClienteModel(cliente.getCedula(), 
 								cliente.getNombre(), 
 								cliente.getApellido(), 
 								cliente.getDireccion(), 
@@ -67,7 +67,7 @@ public class ClienteController {
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 			}
 			
-			ClienteModel model = new ClienteModel(cliente.getDni(), 
+			ClienteModel model = new ClienteModel(cliente.getCedula(), 
 							cliente.getNombre(), 
 							cliente.getApellido(), 
 							cliente.getDireccion(), 
@@ -95,8 +95,8 @@ public class ClienteController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateCliente(@RequestBody ClienteModel cliente){
 		try {
-			if(cliente.getDni()!=null){
-				Cliente cli = repository.findOne(cliente.getDni());
+			if(cliente.getCedula()!=null){
+				Cliente cli = repository.findOne(cliente.getCedula());
 				if(cli != null){
 					repository.save(cli);
 				} else{

@@ -21,36 +21,49 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "cliente")
 public class Cliente implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "dni")
-    private Integer dni;
+    @Column(name = "cedula")
+    private Integer cedula;
+    @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
+    @Basic(optional = false)
     @Column(name = "apellido")
     private String apellido;
+    @Basic(optional = false)
     @Column(name = "direccion")
     private String direccion;
+    @Basic(optional = false)
     @Column(name = "telefono")
     private String telefono;
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dni")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<Vehiculo> vehiculoList;
-
+    
     public Cliente() {
     }
 
-    public Cliente(Integer dni) {
-        this.dni = dni;
+    public Cliente(Integer cedula) {
+        this.cedula = cedula;
     }
 
-    public Integer getDni() {
-        return dni;
+    public Cliente(Integer cedula, String nombre, String apellido, String direccion, String telefono) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
-    public void setDni(Integer dni) {
-        this.dni = dni;
+    public Integer getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(Integer cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -85,19 +98,10 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    @XmlTransient
-    public List<Vehiculo> getVehiculoList() {
-        return vehiculoList;
-    }
-
-    public void setVehiculoList(List<Vehiculo> vehiculoList) {
-        this.vehiculoList = vehiculoList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (dni != null ? dni.hashCode() : 0);
+        hash += (cedula != null ? cedula.hashCode() : 0);
         return hash;
     }
 
@@ -108,31 +112,24 @@ public class Cliente implements Serializable {
             return false;
         }
         Cliente other = (Cliente) object;
-        if ((this.dni == null && other.dni != null) || (this.dni != null && !this.dni.equals(other.dni))) {
+        if ((this.cedula == null && other.cedula != null) || (this.cedula != null && !this.cedula.equals(other.cedula))) {
             return false;
         }
         return true;
     }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Cliente [dni=");
-		builder.append(dni);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", apellido=");
-		builder.append(apellido);
-		builder.append(", direccion=");
-		builder.append(direccion);
-		builder.append(", telefono=");
-		builder.append(telefono);
-		builder.append(", vehiculoList=");
-		builder.append(vehiculoList);
-		builder.append("]");
-		return builder.toString();
-	}
+    @Override
+    public String toString() {
+        return "prueba.newpackage.Cliente[ cedula=" + cedula + " ]";
+    }
 
-    
+    @XmlTransient
+    public List<Vehiculo> getVehiculoList() {
+        return vehiculoList;
+    }
+
+    public void setVehiculoList(List<Vehiculo> vehiculoList) {
+        this.vehiculoList = vehiculoList;
+    }
     
 }
