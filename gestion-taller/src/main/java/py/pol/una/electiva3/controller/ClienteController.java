@@ -24,7 +24,7 @@ import py.pol.una.electiva3.repository.ClienteRepository;
 @RequestMapping("/cliente")
 public class ClienteController {
 	
-	private static final String CLIENTE = "/{dni}";
+	private static final String CLIENTE = "/{cedula}";
 	
 	@Autowired
 	private ClienteRepository repository;
@@ -58,10 +58,10 @@ public class ClienteController {
 	}
 	
 	@GetMapping(value = CLIENTE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getCliente(@PathVariable Integer dni){
+	public ResponseEntity<?> getCliente(@PathVariable Integer cedula){
 		
 		try {
-			Cliente cliente = repository.findOne(dni);
+			Cliente cliente = repository.findOne(cedula);
 			
 			if(cliente==null){
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -82,9 +82,9 @@ public class ClienteController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> saveCliente(@RequestBody Cliente cliente){
+	public ResponseEntity<?> saveCliente(@RequestBody Cliente cedula){
 		try {
-			repository.save(cliente);
+			repository.save(cedula);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -98,6 +98,9 @@ public class ClienteController {
 			if(cliente.getCedula()!=null){
 				Cliente cli = repository.findOne(cliente.getCedula());
 				if(cli != null){
+					cli.setNombre(cliente.getNombre());
+					cli.setApellido(cliente.getApellido());
+					cli.setTelefono(cliente.getTelefono());
 					repository.save(cli);
 				} else{
 					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -111,13 +114,15 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping(value = CLIENTE)
-	public ResponseEntity<?> deleteCliente(@PathVariable Integer dni){
+	public ResponseEntity<?> deleteCliente(@PathVariable Integer cedula){
 		try {
-			Cliente cliente = repository.findOne(dni);
+			Cliente cliente = repository.findOne(cedula);
 			
 			if(cliente==null){
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 			}
+			
+			repository.delete(cedula);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);

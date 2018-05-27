@@ -80,9 +80,11 @@ public class RepuestoController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> saveCliente(@RequestBody Repuestos repuesto){
 		try {
+			
 			repository.save(repuesto);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -94,6 +96,8 @@ public class RepuestoController {
 			if(repuesto.getCodRepuesto()!=null){
 				Repuestos rep = repository.findOne(repuesto.getCodRepuesto());
 				if(rep != null){
+					rep.setNombre(repuesto.getNombre());
+					rep.setPrecio(repuesto.getPrecio());
 					repository.save(rep);
 				} else{
 					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -114,6 +118,8 @@ public class RepuestoController {
 			if(repuesto==null){
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 			}
+			
+			repository.delete(idRepuesto);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
