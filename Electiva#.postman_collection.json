@@ -1,0 +1,119 @@
+{
+	"info": {
+		"name": "Electiva#",
+		"_postman_id": "168686ed-f870-e256-8e96-cc37a6d361a8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8088/electiva3/api/vehiculo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8088/electiva3/api/vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"electiva3",
+						"api",
+						"vehiculo"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8088/electiva3/api/vehiculo/BTN928",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8088/electiva3/api/vehiculo/BTN928",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"electiva3",
+						"api",
+						"vehiculo",
+						"BTN928"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8088/electiva3/api/vehiculo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"matricula\": \"ABC123\",\n    \"modelo\": \"COROLLA X\",\n    \"color\": \"Negro\",\n    \"cliente\": {\n        \"cedula\": 123456\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8088/electiva3/api/vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"electiva3",
+						"api",
+						"vehiculo"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8088/electiva3/api/vehiculo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"matricula\": \"ABC123\",\n    \"modelo\": \"COROLLA\",\n    \"color\": \"Blanco\",\n    \"cliente\": {\n        \"cedula\": 4805084\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8088/electiva3/api/vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"electiva3",
+						"api",
+						"vehiculo"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
