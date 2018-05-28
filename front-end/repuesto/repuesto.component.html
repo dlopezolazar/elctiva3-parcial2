@@ -1,0 +1,63 @@
+<div [hidden]= "bloqueCentral">
+  <div style="text-align:center">
+    <h1>
+      Bienvenidos a Repuestos!
+    </h1>
+    <img src="assets/img/repuesto.png">
+  </div>
+    
+  <div class="container center_div">
+    <h2 class="text-center">Seleccione la accion a realizar: </h2>
+    <br/><br/>
+    <div id="bot">
+      <button class="btn btn-primary pull-right"(click)="crear()"> Crear</button>
+      <button class="btn btn-secondary" (click)="modificar()">Modificar</button>
+      <button class="btn btn-danger"(click)="eliminar()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div id="crear" [hidden]="bloqueaCrear">
+    <div class="container">
+      <form>
+        <h1>Nuevo Repuesto</h1>
+          <div class="form-group">
+            <label for="cod_repuesto">Codigo</label>
+            <input type="text" class="form-control" id="cod_repuesto" [(ngModel)]="repu.cod_repuesto" required name="cod_repuesto">
+          </div>
+     
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="repu.nombre" name="nombre">
+          </div>
+          <div class="form-group">
+              <label for="precio">Precio</label>
+              <input type="text" class="form-control" id="precio" [(ngModel)]="repu.precio" name="precio">
+          </div>
+          <div>
+              <button class="btn btn-success"(click)="guardarCli()">Guardar</button>
+              <button class="btn btn-danger"(click)="cancelarCli()">Cancelar</button>
+          </div>
+      </form>
+    </div>
+</div>
+
+<div id="modificar" [hidden]="bloqueaModifi">
+</div>
+<div class="container">
+  <div id="eliminar" [hidden]="bloqueaEliminar">
+    <h1>Eliminar Repuesto</h1>
+    <form>
+      <div class="form-group">
+        <label for="cod_repuesto">Codigo</label>
+        <input type="text" class="form-control" id="cod_repuesto" [(ngModel)]="elirepu.cod_repuesto" required name="cod_repuesto">
+      </div>
+      <div class="text-center">
+        <div>
+          <button class="btn btn-warning"(click)="eliminarCli()">Eliminar Repuesto</button>
+          <button class="btn btn-danger"(click)="cancelarEli()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

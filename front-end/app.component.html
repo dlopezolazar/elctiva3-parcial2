@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center" [hidden]="ver">
+  <h1>
+    Bienvenidos al {{ title }}!
+  </h1>
+  <img src="assets/img/taller-icon.png" [hidden]="ver">
+</div>
+
+<div class="container center_div" [hidden]="ver">
+  <h2 class="text-center">Seleccione donde ir: </h2>
+  <br/><br/>
+  <div class="d-flex justify-content-between" id="bot">
+    <button class="btn btn-outline-primary pull-right" routerLink="/cliente" (click)="ocultar()"> Ir a Clientes</button>
+    <button class="btn btn-outline-success" routerLink="/vehiculo" (click)="ocultar()">Ir a Vehiculos</button>
+    <button class="btn btn-outline-dark" routerLink="/repuesto" (click)="ocultar()">Ir a Repuestos</button>
+  </div>
+</div>
+<router-outlet></router-outlet>
+  <!--  
+  <app-cliente hidden={{cliente}}></app-cliente>
+  <app-vehiculo hidden="vehiculo"></app-vehiculo>
+  <app-repuesto hidden="repuesto"></app-repuesto>
+  -->

@@ -1,0 +1,74 @@
+<div [hidden]= "bloqueCentral">
+  <div style="text-align:center">
+    <h1>
+      Bienvenidos a la seccion Usuarios!
+    </h1>
+    <img src="assets/img/usuario.png">
+  </div>
+    
+  <div class="container center_div">
+    <h2 class="text-center">Seleccione: </h2>
+    <div id="bot">
+      <button class="btn btn-outline-primary pull-right"(click)="crear()"> Crear</button>
+      <button class="btn btn-outline-secondary" (click)="modificar()">Modificar</button>
+      <button class="btn btn-outline-danger"(click)="eliminar()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div id="crear" [hidden]="bloqueaCrear">
+    <div class="container">
+      <form>
+        <h1>Nuevo Usuario</h1>
+          <div class="form-group">
+            <label for="dni">Identificacion</label>
+            <input type="number" class="form-control" id="dni" [(ngModel)]="clien.dni" required name="dni">
+          </div>
+     
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="clien.nombre" name="nombre">
+          </div>
+          <div class="form-group">
+              <label for="apellido">Apellido</label>
+              <input type="text" class="form-control" id="apellido" [(ngModel)]="clien.apellido" name="apellido">
+            </div>
+            <div class="form-group">
+                <label for="direccion">Direccion</label>
+                <input type="text" class="form-control" id="direccion" [(ngModel)]="clien.direccion" name="direccion">
+              </div>
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="text" class="form-control" id="telefono"[(ngModel)]="clien.telefono" name="telefono">
+              </div>
+          <div>
+              <button class="btn btn-success"(click)="guardarCli()">Guardar</button>
+              <button class="btn btn-danger"(click)="cancelarCli()">Cancelar</button>
+          </div>
+      </form>
+    </div>
+</div>
+<div id="modificar" [hidden]="bloqueaModifi">
+
+</div>
+<div class="container">
+  <div id="eliminar" [hidden]="bloqueaEliminar">
+    <h1>Eliminar Usuario</h1>
+    <form>
+      <div class="form-group">
+        <label for="dni">Identificacion</label>
+        <input type="number" class="form-control" id="dni" [(ngModel)]="eliUsuario.dni" required name="dni">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="eliUsuario.nombre" name="nombre">
+      </div>
+
+      <div>
+        <button class="btn btn-warning"(click)="eliminarCli()">Eliminar Cliente</button>
+        <button class="btn btn-danger"(click)="cancelarEli()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
